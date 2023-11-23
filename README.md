@@ -30,14 +30,10 @@ Em resumo, o que se deve entregar das tarefas é:
 
 # Resolução:
 
-1) Primeiramente, executamos a Stored Procedure fornecida pelo repositório do desafio, o que nos gera um banco de dados para usarmos de base. Após a execução da Stored Procedure, analisamos o banco de dados que temos em mão para que possamos gerar a melhor consulta possível, para o que a tarefa pede (aqui se encontra a  <a href="sql/stored_procedure_desafio_eng.sql">Stored Procedure</a>).
-
-<img src="images/figura_stored_procedure.png">
+1) Primeiramente, executamos a Stored Procedure fornecida pelo repositório do desafio (que se encontra <a href="sql/stored_procedure_desafio_eng.sql">aqui</a>), o que nos gera um banco de dados para usarmos de base. Após a execução da Stored Procedure, analisamos o banco de dados que temos em mão para que possamos gerar a melhor consulta possível, para o que a tarefa pede .
 
 Calcularemos o ganho total da empresa através do percentual das transações de cartão de crédito realizadas pelos clientes, baseados na taxa administrativa do serviço de cartão de crédito para eles. Baseia-se o cálculo nos conjuntos de dados "transação", "cliente" e "contrato".
-Com essas informações e analisando o banco de dados fornecidos, chegamos na consulta abaixo (a aqui se encontra a  <a href="sql/gasto_total_query.sql">consulta em si </a> se encontra aqui):
-
-<img src="images/figura_query.png">
+Com essas informações e analisando o banco de dados fornecidos, chegamos na seguinte <a href="sql/gasto_total_query.sql">consulta</a>.
 
 Temos, como resultados da consulta:
 
