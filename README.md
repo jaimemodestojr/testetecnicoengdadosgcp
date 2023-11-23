@@ -6,14 +6,14 @@ O teste técnico fornecido consiste na realização de 4 tarefas, todas envolven
 
 <img src="images/Figura 1.png">
 
-3) A segunda tarefa consiste em calcular o total líquido da empresa, sendo esse total obtido pelo seguinte cálculo: total_liquido = soma(total_bruto – desconto_percentual). O cálculo é baseado no mesmo conjunto de dados da tarefa anterior, fornecido pelo repositório do teste técnico e deve ser feita com um código em Pyspark.
+2) A segunda tarefa consiste em calcular o total líquido da empresa, sendo esse total obtido pelo seguinte cálculo: total_liquido = soma(total_bruto – desconto_percentual). O cálculo é baseado no mesmo conjunto de dados da tarefa anterior, fornecido pelo repositório do teste técnico e deve ser feita com um código em Pyspark.
 
-4) A terceira tarefa consiste na transformação de dados disponíveis em arquivo Json para o formato de dataframe. Após transformar esse Json em dataframe, é possível perceber que a coluna "item_list" está como dicionário. Seu gestor pediu dois pontos de atenção nessa tarefa:
+3) A terceira tarefa consiste na transformação de dados disponíveis em arquivo Json para o formato de dataframe. Após transformar esse Json em dataframe, é possível perceber que a coluna "item_list" está como dicionário. Seu gestor pediu dois pontos de atenção nessa tarefa:
 
    - Expandir a coluna num mesmo dataframe;
    - Normalizar os itens dessa coluna de dicionário e dividí-los em dois dataframes separados, seguindo o modelo relacional.
 
-5) Imagine que o Json das notas fiscais é disponibilizado em uma API. Como você utilizaria as tecnologias da GCP para ingerir, transformar e, eventualmente, carregar esses dados em um BigTable? A quarta tarefa consiste na construção de uma arquitetura de ingestão dos dados de nota fiscal, a qual deve atender aos seguintes pontos:
+4) Imagine que o Json das notas fiscais é disponibilizado em uma API. Como você utilizaria as tecnologias da GCP para ingerir, transformar e, eventualmente, carregar esses dados em um BigTable? A quarta tarefa consiste na construção de uma arquitetura de ingestão dos dados de nota fiscal, a qual deve atender aos seguintes pontos:
 
    - Esquemas de fluxo de dados;
    - Descrições de funcionamento (se necessário);
@@ -50,7 +50,7 @@ O "Cliente B" não aparece no resultado, pois não há transações associadas a
 Em sequência, iniciamos a sessão Spark, montando-a, dando um nome para a aplicação e a configurando. Nesse momento, na parte de configurações, utilizamos o driver JDBC, que é um driver fornecido pela Microsoft que tem como função fazer a conexão entre o Pyspark e o SQL Server. Fornecemos o caminho local do arquivo nas configurações.
 Próximo passo é carregarmos os dados do banco de dados criado com a Stored Procedure fornecida pelo repositório do teste técnico e, logo em seguida, realizarmos o "Join", ou seja, juntamos os dois dataframes para fins de efetuamos o cálculo do total líquido.
 Por fim, efetuamos o cálculo do total líquido da empresa através da lógica fornecida pelo teste técnico, mostramos o resultado e encerramos a sessão Spark.
-O notebook completo com a resolução se encontra aqui: <a href="notebooks/calculo_total_liquido.Ipynb">Notebook do cálculo do total líquido</a>.
+O notebook completo com a resolução se encontra aqui: <a href="notebooks/calculo_total_liquido.ipynb">Notebook do cálculo do total líquido</a>.
 
 
 3) O primeiro passo para realizarmos a resolução da tarefa 2 é fazermos o upload do arquivo json fornecido pelo repositório do teste técnico. O próximo passo é analisarmos o arquivo json fornecido, de nome "data.json".
