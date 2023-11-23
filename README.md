@@ -4,7 +4,7 @@ O teste técnico fornecido consiste na realização de 4 tarefas, todas envolven
 
 1) Confeccione uma consulta que calcule o ganho total da empresa, o qual é obtido a partir da taxa administrativa do serviço de cartão de crédito para seus clientes. Esse ganho é calculado sobre um percentual das transações de cartão de crédito realizadas por eles. O cálculo é baseado no conjunto de dados fornecido pelo repositório do teste técnico e ilustrado na imagem abaixo:
 
-<img src="images/FIgura 1.png">
+<img src="images/Figura 1.png">
 
 3) A segunda tarefa consiste em calcular o total líquido da empresa, sendo esse total obtido pelo seguinte cálculo: total_liquido = soma(total_bruto – desconto_percentual). O cálculo é baseado no mesmo conjunto de dados da tarefa anterior, fornecido pelo repositório do teste técnico e deve ser feita com um código em Pyspark.
 
@@ -30,40 +30,38 @@ Em resumo, o que se deve entregar das tarefas é:
 
 # Resolução:
 
-1) Primeiramente, executamos a Stored Procedure fornecida pelo repositório do desafio, o que nos gera um banco de dados para usarmos de base. Após a execução da Stored Procedure, analisamos o banco de dados que temos em mão para que possamos gerar a melhor consulta possível, para o que a tarefa pede.
+1) Primeiramente, executamos a Stored Procedure fornecida pelo repositório do desafio, o que nos gera um banco de dados para usarmos de base. Após a execução da Stored Procedure, analisamos o banco de dados que temos em mão para que possamos gerar a melhor consulta possível, para o que a tarefa pede (aqui se encontra a  <a href="sql/stored_procedure_desafio_eng.sql">Stored Procedure</a>).
 
 <img src="images/figura_stored_procedure.png">
 
 Calcularemos o ganho total da empresa através do percentual das transações de cartão de crédito realizadas pelos clientes, baseados na taxa administrativa do serviço de cartão de crédito para eles. Baseia-se o cálculo nos conjuntos de dados "transação", "cliente" e "contrato".
-Com essas informações e analisando o banco de dados fornecidos, chegamos na consulta abaixo:
+Com essas informações e analisando o banco de dados fornecidos, chegamos na consulta abaixo (a aqui se encontra a  <a href="sql/gasto_total_query.sql">consulta em si </a> se encontra aqui):
 
-<img src="mages/figura_query.png">
+<img src="images/figura_query.png">
 
 Temos, como resultados da consulta:
 
-<img src="images/resultado_query.png">
+<img src="images/figura_resultado_query.png">
 
 O "Cliente B" não aparece no resultado, pois não há transações associadas a contratos ativos para esse cliente no conjunto de dados fornecido.
 
-2) Para a segunda tarefa, analisaremos novamente o banco de dados fornecido pelo repositório do desafio e alinharemos a requisição com o que temos. Nisso, prosseguimos, antes de mais nada, instalando, tanto o Pyspark no sistema, quanto o Pyodbc.
 
+2) Para a segunda tarefa, analisaremos novamente o banco de dados fornecido pelo repositório do desafio e alinharemos a requisição com o que temos. Nisso, prosseguimos, antes de mais nada, importando, do framework Pyspark, as funções necessárias para efetuarmos o cálculo do total líquido.
+Em sequência, iniciamos a sessão Spark, montando-a, dando um nome para a aplicação e a configurando. Nesse momento, na parte de configurações, utilizamos o driver JDBC, que é um driver fornecido pela Microsoft que tem como função fazer a conexão entre o Pyspark e o SQL Server. Fornecemos o caminho local do arquivo nas configurações.
+Próximo passo é carregarmos os dados do banco de dados criado com a Stored Procedure fornecida pelo repositório do teste técnico e, logo em seguida, realizarmos o "Join", ou seja, juntamos os dois dataframes para fins de efetuamos o cálculo do total líquido.
+Por fim, efetuamos o cálculo do total líquido da empresa através da lógica fornecida pelo teste técnico, mostramos o resultado e encerramos a sessão Spark.
+O notebook completo com a resolução se encontra aqui: <a href="json_to_df.Ipynb">Notebook do cálculo do total líquido</a>.
 
-
-
-
-A segunda tarefa consiste em calcular o total líquido da empresa. Esse total é calculado da seguinte forma total_liquido = soma(total_bruto – desconto_percentual). O cálculo é baseado no conjunto de dados da Figura 3
-
-O resultado esperado é uma código com pyspark que retorne o total liquido da empresa que é 59973.46.
 
 3) O primeiro passo para realizarmos a resolução da tarefa 2 é fazermos o upload do arquivo json fornecido pelo repositório do teste técnico. O próximo passo é analisarmos o arquivo json fornecido, de nome "data.json".
 Agora, carregamos o arquivo "data.json" em um dataframe utilizando a biblioteca Python chamada Pandas. Começamos importando a biblioteca e dando um "apelido" para a mesma, sendo ele "pd", para facilitar a "chamada" de tal biblioteca durante todo o seu uso. Depois, expandimos a columa "ItemList", pois a mesma contém dicionários. Iremos expandí-la no mesmo dataframe.
-O passo seguinte consiste em nortamizar os itens da coluna "ItemList" e dividir os mesmos em dois dataframes distintos, seguindo o modelo relacional. Seguiremos assim: o dataframe "df_nfe_details' contéra os detalhes da nota fiscal e o dataframe "df_items" conterá os itens da nota fiscal. Segue o código explicado, no formato de um notebook do Jupyter Notebook:
+O passo seguinte consiste em nortamizar os itens da coluna "ItemList" e dividir os mesmos em dois dataframes distintos, seguindo o modelo relacional. Seguiremos assim: o dataframe "df_nfe_details' contéra os detalhes da nota fiscal e o dataframe "df_items" conterá os itens da nota fiscal.
+O notebook completo com a resolução se encontra aqui: <a href="json_to_df.Ipynb">Notebook da transformação de json em dataframe</a>.
 
-<a href="json_to_df.Ipynb">Noteboof</a>.
 
 4) O primeiro passo é entender bem o que foi proposto, sendo que consiste numa arquitetura de Fluxo de Dados (ETL), feito no ecossistema de computação em nuvem Google Cloud Platform, com os dados brutos sendo notas fiscais, provenientes de uma API externa à plataforma do GCP. Segue a arquitetura proposta:
   
-<img src="Arquitetura_API_NF_GCP.png">
+<img src="images/arquitetura_API_NF_GCP.png">
 
 Resumidamente, uma Cloud Function consulta periodicamente a API de Notas Fiscais e envia os dados para o Cloud Pub/Sub que, por sua vez, publica os dados para o Cloud Dataflow que processa e transforma os dados, seguindo os parâmetros estabelecidos pelo cliente e pelo bom senso do engenheiro de dados. E, após finalizada a etapa do Cloud Dataflow, os dados são carregados no Cloud Bigtable.
 
