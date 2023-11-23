@@ -1,6 +1,6 @@
 # Teste técnico - Engenheiro de dados GCP
 
-O teste técnico fornecido consiste na realização de 4 tarefas, todas envolvendo dados, tendo como cenário: você é a pessoa engenheira de dados por trás do projeto de DataOps junto a uma grande operadora de cartões de crédito. Os dados a serem ingeridos e analisados em nossa plataforma de Big Data são dados de compras (trasação), documentos (contrato) e dados de compradores (cliente). Seguem as 4 tarefas:
+O teste técnico fornecido consiste na realização de 4 tarefas, todas envolvendo dados, tendo como cenário: você é a pessoa engenheira de dados por trás do projeto de DataOps junto a uma grande operadora de cartões de crédito. Os dados a serem ingeridos e analisados em nossa plataforma de Big Data são dados de compras (transação), documentos (contrato) e dados de compradores (cliente). Seguem as 4 tarefas:
 
 1) Confeccione uma consulta que calcule o ganho total da empresa, o qual é obtido a partir da taxa administrativa do serviço de cartão de crédito para seus clientes. Esse ganho é calculado sobre um percentual das transações de cartão de crédito realizadas por eles. O cálculo é baseado no conjunto de dados fornecido pelo repositório do teste técnico e ilustrado na imagem abaixo:
 
