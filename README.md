@@ -50,13 +50,13 @@ O "Cliente B" não aparece no resultado, pois não há transações associadas a
 Em sequência, iniciamos a sessão Spark, montando-a, dando um nome para a aplicação e a configurando. Nesse momento, na parte de configurações, utilizamos o driver JDBC, que é um driver fornecido pela Microsoft que tem como função fazer a conexão entre o Pyspark e o SQL Server. Fornecemos o caminho local do arquivo nas configurações.
 Próximo passo é carregarmos os dados do banco de dados criado com a Stored Procedure fornecida pelo repositório do teste técnico e, logo em seguida, realizarmos o "Join", ou seja, juntamos os dois dataframes para fins de efetuamos o cálculo do total líquido.
 Por fim, efetuamos o cálculo do total líquido da empresa através da lógica fornecida pelo teste técnico, mostramos o resultado e encerramos a sessão Spark.
-O notebook completo com a resolução se encontra aqui: <a href="json_to_df.Ipynb">Notebook do cálculo do total líquido</a>.
+O notebook completo com a resolução se encontra aqui: <a href="notebooks/total_liquido.Ipynb">Notebook do cálculo do total líquido</a>.
 
 
 3) O primeiro passo para realizarmos a resolução da tarefa 2 é fazermos o upload do arquivo json fornecido pelo repositório do teste técnico. O próximo passo é analisarmos o arquivo json fornecido, de nome "data.json".
 Agora, carregamos o arquivo "data.json" em um dataframe utilizando a biblioteca Python chamada Pandas. Começamos importando a biblioteca e dando um "apelido" para a mesma, sendo ele "pd", para facilitar a "chamada" de tal biblioteca durante todo o seu uso. Depois, expandimos a columa "ItemList", pois a mesma contém dicionários. Iremos expandí-la no mesmo dataframe.
 O passo seguinte consiste em nortamizar os itens da coluna "ItemList" e dividir os mesmos em dois dataframes distintos, seguindo o modelo relacional. Seguiremos assim: o dataframe "df_nfe_details' contéra os detalhes da nota fiscal e o dataframe "df_items" conterá os itens da nota fiscal.
-O notebook completo com a resolução se encontra aqui: <a href="json_to_df.Ipynb">Notebook da transformação de json em dataframe</a>.
+O notebook completo com a resolução se encontra aqui: <a href="notebooks/json_to_df.Ipynb">Notebook da transformação de json em dataframe</a>.
 
 
 4) O primeiro passo é entender bem o que foi proposto, sendo que consiste numa arquitetura de Fluxo de Dados (ETL), feito no ecossistema de computação em nuvem Google Cloud Platform, com os dados brutos sendo notas fiscais, provenientes de uma API externa à plataforma do GCP. Segue a arquitetura proposta:
