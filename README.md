@@ -1,4 +1,4 @@
-# Teste técnico - Engenheiro de dados GCP
+# Exemplo de desafio técnico - engenharia de dados com aplicação em nuvem (GCP):
 
 O teste técnico fornecido consiste na realização de 4 tarefas, todas envolvendo dados, tendo como cenário: você é a pessoa engenheira de dados por trás do projeto de DataOps junto a uma grande operadora de cartões de crédito. Os dados a serem ingeridos e analisados em nossa plataforma de Big Data são dados de compras (transação), documentos (contrato) e dados de compradores (cliente). Seguem as 4 tarefas:
 
